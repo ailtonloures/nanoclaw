@@ -1068,7 +1068,12 @@ registerChannelAdapter('whatsapp', {
 
         if (text) {
           const { text: formatted, mentions } = formatWhatsApp(text);
-          const prefixed = WHATSAPP_SHARED ? `${ASSISTANT_NAME}: ${formatted}` : formatted;
+          // noPrefix: set by direct sends that target someone else's chat (not
+          // the operator's own self-chat) — the shared-number name prefix
+          // exists to tell the operator's own typing apart from the bot's in
+          // THEIR self-chat; it has no purpose (and actively hurts "send as
+          // me") on a message addressed to a third party.
+          const prefixed = WHATSAPP_SHARED && !content.noPrefix ? `${ASSISTANT_NAME}: ${formatted}` : formatted;
           return sendRawMessage(platformId, prefixed, mentions);
         }
       },
