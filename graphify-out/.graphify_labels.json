@@ -323,5 +323,20 @@
   "321": "progressLogPath",
   "322": "stepsDir",
   "323": "vitest.config.ts",
-  "324": "vitest.skills.config.ts"
+  "324": "vitest.skills.config.ts",
+  "325": "signal-auth.ts",
+  "326": "auth.ts",
+  "327": "Operations",
+  "328": "fullyApplied",
+  "329": "bright-select.ts",
+  "330": "Customizing NanoClaw",
+  "331": "clidash",
+  "332": "tools/clidash/test/ncl-overview.test.js",
+  "333": "Remove Google Sheets Tool",
+  "334": "whatsapp.test.ts",
+  "335": "egress-lockdown.ts",
+  "336": "mdToHtml",
+  "337": "tools/clidash/test/fixtures/stub-cli.js",
+  "338": "tools/clidash/test/smoke.sh",
+  "339": "tools/clidash/test/css.test.js"
 }

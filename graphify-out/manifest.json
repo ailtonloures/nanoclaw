@@ -305,9 +305,9 @@
     "semantic_hash": "90530426d75dfc99ae9bb0f1a0110c7f"
   },
   "container/cli-tools.json": {
-    "mtime": 1785175262.6150298,
-    "ast_hash": "77fa6e8f9a960517189a4c9c8775985c",
-    "semantic_hash": "77fa6e8f9a960517189a4c9c8775985c"
+    "mtime": 1785300866.4488995,
+    "ast_hash": "2f46b029736af9161801beac84ef3489",
+    "semantic_hash": ""
   },
   "container/cli-tools.test.ts": {
     "mtime": 1785020042.9259336,
@@ -570,9 +570,9 @@
     "semantic_hash": "8754e8130355b65f47f21de34f1c3b88"
   },
   "src/cli/resources/groups.ts": {
-    "mtime": 1785175262.5970297,
-    "ast_hash": "b79d38cc00581e5db59ab8e8c5f9179a",
-    "semantic_hash": "b79d38cc00581e5db59ab8e8c5f9179a"
+    "mtime": 1785301916.7589715,
+    "ast_hash": "059a12c8483fa1683efb1b09278eca49",
+    "semantic_hash": ""
   },
   "src/cli/resources/index.ts": {
     "mtime": 1785020042.9396365,
@@ -1570,9 +1570,9 @@
     "semantic_hash": "5d0d0a4b326203ba27a5e93c34fc0bc4"
   },
   ".claude/settings.local.json": {
-    "mtime": 1785040347.0179062,
-    "ast_hash": "a1bfc25ab8f1d140ef73adbcf5920a35",
-    "semantic_hash": "a1bfc25ab8f1d140ef73adbcf5920a35"
+    "mtime": 1785300682.7521398,
+    "ast_hash": "c5502b50b8e4b64b32b750f1ee054443",
+    "semantic_hash": ""
   },
   ".claude/skills/add-atomic-chat-tool/atomic-chat-env.ts": {
     "mtime": 1785020042.8678062,
@@ -3403,5 +3403,205 @@
     "mtime": 1785020042.9326754,
     "ast_hash": "12c646879e58f4e087ba38580fa413c2",
     "semantic_hash": "12c646879e58f4e087ba38580fa413c2"
+  },
+  ".claude/skills/add-gdrive-tool/gdrive-mcp-stdio.ts": {
+    "mtime": 1785615405.7297888,
+    "ast_hash": "2118728d8317b4696406e3b39250eaf4",
+    "semantic_hash": ""
+  },
+  ".claude/skills/add-gdrive-tool/gdrive-scope.test.ts": {
+    "mtime": 1785615489.1601381,
+    "ast_hash": "89cc3ee8b3d6f87e15c20d78a337a990",
+    "semantic_hash": ""
+  },
+  ".claude/skills/add-gsheets-tool/gsheets-mcp-stdio.ts": {
+    "mtime": 1785615711.479071,
+    "ast_hash": "f6d621680b4e4a67769e15946fd78e98",
+    "semantic_hash": ""
+  },
+  ".claude/skills/add-gsheets-tool/gsheets-scope.test.ts": {
+    "mtime": 1785615739.3961883,
+    "ast_hash": "7766d3469828ee37afc1e0a7ff8a907e",
+    "semantic_hash": ""
+  },
+  "tools/clidash/activity.js": {
+    "mtime": 1785303279.7856987,
+    "ast_hash": "54721e6327667f36a4299143a563841f",
+    "semantic_hash": ""
+  },
+  "tools/clidash/clidash.config.example.json": {
+    "mtime": 1785303279.7857206,
+    "ast_hash": "8c6107f5c10e633916038b29e55b0708",
+    "semantic_hash": ""
+  },
+  "tools/clidash/docs.js": {
+    "mtime": 1785303279.785744,
+    "ast_hash": "dde0905b5e6b262cdce799212be29ef2",
+    "semantic_hash": ""
+  },
+  "tools/clidash/logs.js": {
+    "mtime": 1785303279.785764,
+    "ast_hash": "64d9da3261f4c48ed84069a748e0219b",
+    "semantic_hash": ""
+  },
+  "tools/clidash/package.json": {
+    "mtime": 1785303279.7857854,
+    "ast_hash": "05010559fc06593a58879ff9259a155e",
+    "semantic_hash": ""
+  },
+  "tools/clidash/parsers.js": {
+    "mtime": 1785303279.7858055,
+    "ast_hash": "cbbe558588a8577e52f96fe2c8474b71",
+    "semantic_hash": ""
+  },
+  "tools/clidash/public/app.js": {
+    "mtime": 1785303279.7858644,
+    "ast_hash": "4d5bdd2f9c0981cbbb9efbb9b31a99aa",
+    "semantic_hash": ""
+  },
+  "tools/clidash/public/md.js": {
+    "mtime": 1785303279.7860775,
+    "ast_hash": "ddd4da97162e8313ad957648fa2a6568",
+    "semantic_hash": ""
+  },
+  "tools/clidash/server.js": {
+    "mtime": 1785303279.7861686,
+    "ast_hash": "9b22f7ece5a1a615d40669d6bd011410",
+    "semantic_hash": ""
+  },
+  "tools/clidash/test/activity-server.test.js": {
+    "mtime": 1785303279.7862308,
+    "ast_hash": "b3d8d83cea695ddb1e82569c47d4e4d2",
+    "semantic_hash": ""
+  },
+  "tools/clidash/test/activity.test.js": {
+    "mtime": 1785303279.7862551,
+    "ast_hash": "9058a7adcf1df10343c6073a20575955",
+    "semantic_hash": ""
+  },
+  "tools/clidash/test/cmd.test.js": {
+    "mtime": 1785303279.786276,
+    "ast_hash": "3e8e16a8bf35934b247bbeaa920e1a4e",
+    "semantic_hash": ""
+  },
+  "tools/clidash/test/css.test.js": {
+    "mtime": 1785303279.7862992,
+    "ast_hash": "0f4867e504a39a07987826062b23bef5",
+    "semantic_hash": ""
+  },
+  "tools/clidash/test/docs-server.test.js": {
+    "mtime": 1785303279.7863197,
+    "ast_hash": "6dfac5d8409f4cfc065b8c5489274cf7",
+    "semantic_hash": ""
+  },
+  "tools/clidash/test/docs.test.js": {
+    "mtime": 1785303279.7863452,
+    "ast_hash": "c4d4b1025e5bfadc42d06542ebd8514d",
+    "semantic_hash": ""
+  },
+  "tools/clidash/test/fixtures/stub-cli.js": {
+    "mtime": 1785303279.786426,
+    "ast_hash": "ad0424a6b786e326c81a29548197ec4e",
+    "semantic_hash": ""
+  },
+  "tools/clidash/test/help.test.js": {
+    "mtime": 1785303279.7864501,
+    "ast_hash": "9c4e20481dcf497c03e7b7cd1ac35c8c",
+    "semantic_hash": ""
+  },
+  "tools/clidash/test/logs.test.js": {
+    "mtime": 1785303279.7864704,
+    "ast_hash": "9292d74dc1a9177df16b0030637713f0",
+    "semantic_hash": ""
+  },
+  "tools/clidash/test/md.test.js": {
+    "mtime": 1785303279.7864904,
+    "ast_hash": "2539a39b30062c296c72dcdd49f2fa40",
+    "semantic_hash": ""
+  },
+  "tools/clidash/test/ncl-overview.test.js": {
+    "mtime": 1785303279.7865107,
+    "ast_hash": "027b006c04abbec52c7c58764f4450cf",
+    "semantic_hash": ""
+  },
+  "tools/clidash/test/parsers.test.js": {
+    "mtime": 1785303279.7865336,
+    "ast_hash": "0a888839faaea11ce5d9712567c05db7",
+    "semantic_hash": ""
+  },
+  "tools/clidash/test/server.test.js": {
+    "mtime": 1785303279.7865553,
+    "ast_hash": "a0bb707eb567cabe400c3a12b11ea897",
+    "semantic_hash": ""
+  },
+  "tools/clidash/test/smoke.sh": {
+    "mtime": 1785303279.7865956,
+    "ast_hash": "7140f2157fc2be69c9da68b6bc976bb3",
+    "semantic_hash": ""
+  },
+  "tools/clidash/views/ncl-overview.js": {
+    "mtime": 1785303279.7866461,
+    "ast_hash": "5af69324bf0201f2ab5a5ea7100014f5",
+    "semantic_hash": ""
+  },
+  ".claude/skills/add-gdrive-tool/REMOVE.md": {
+    "mtime": 1785615566.680463,
+    "ast_hash": "7acb8d5508e217c4372abd45e6c8f44e",
+    "semantic_hash": ""
+  },
+  ".claude/skills/add-gdrive-tool/SKILL.md": {
+    "mtime": 1785615553.7144086,
+    "ast_hash": "861517313d2adcbc8f82221970661c63",
+    "semantic_hash": ""
+  },
+  ".claude/skills/add-gsheets-tool/REMOVE.md": {
+    "mtime": 1785615814.6985047,
+    "ast_hash": "48785b64da813603aa3a4c43ae6034eb",
+    "semantic_hash": ""
+  },
+  ".claude/skills/add-gsheets-tool/SKILL.md": {
+    "mtime": 1785615805.9624681,
+    "ast_hash": "fef85d1e23e467f1300a656c2e73c73d",
+    "semantic_hash": ""
+  },
+  "container/skills/wiki/SKILL.md": {
+    "mtime": 1785471187.4939432,
+    "ast_hash": "24fd3bb5546716896e331e80999f3670",
+    "semantic_hash": ""
+  },
+  "tools/clidash/README.md": {
+    "mtime": 1785303279.7856522,
+    "ast_hash": "3c0deb85849596bad3db83e8a8a9a8c1",
+    "semantic_hash": ""
+  },
+  "tools/clidash/public/index.html": {
+    "mtime": 1785303279.786056,
+    "ast_hash": "bf3f15e9493dc475177e49ec418a6c77",
+    "semantic_hash": ""
+  },
+  "tools/clidash/test/fixtures/ncl-help.txt": {
+    "mtime": 1785303279.786395,
+    "ast_hash": "212113cdb56a889b92ea01a7db33183a",
+    "semantic_hash": ""
+  },
+  "tools/clidash/public/apple-touch-icon.png": {
+    "mtime": 1785303279.7859128,
+    "ast_hash": "6ffdb3338983b09588cfe191615dde10",
+    "semantic_hash": ""
+  },
+  "tools/clidash/public/favicon.svg": {
+    "mtime": 1785303279.7859654,
+    "ast_hash": "562423f9c7478f801246b56dbf70e4f1",
+    "semantic_hash": ""
+  },
+  "tools/clidash/public/icon-192.png": {
+    "mtime": 1785303279.785987,
+    "ast_hash": "dad1e9a0aba71df601678e0920812b1c",
+    "semantic_hash": ""
+  },
+  "tools/clidash/public/icon-512.png": {
+    "mtime": 1785303279.7860212,
+    "ast_hash": "fd05f98f0594d94339902a8b89d1c60d",
+    "semantic_hash": ""
   }
 }

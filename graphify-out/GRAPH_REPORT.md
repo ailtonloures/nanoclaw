@@ -1,16 +1,16 @@
-# Graph Report - nanoclaw-v2  (2026-07-27)
+# Graph Report - nanoclaw-v2  (2026-08-01)
 
 ## Corpus Check
-- 655 files · ~847,037 words
+- 689 files · ~871,352 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 4990 nodes · 10309 edges · 325 communities (281 shown, 44 thin omitted)
-- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 147 edges (avg confidence: 0.76)
+- 5217 nodes · 10671 edges · 340 communities (291 shown, 49 thin omitted)
+- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 151 edges (avg confidence: 0.76)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `adbe41a5`
+- Built from commit: `87220acf`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -316,6 +316,21 @@
 - uninstall.sh
 - progressLogPath
 - stepsDir
+- signal-auth.ts
+- auth.ts
+- Operations
+- fullyApplied
+- bright-select.ts
+- Customizing NanoClaw
+- clidash
+- tools/clidash/test/ncl-overview.test.js
+- Remove Google Sheets Tool
+- whatsapp.test.ts
+- egress-lockdown.ts
+- mdToHtml
+- tools/clidash/test/fixtures/stub-cli.js
+- tools/clidash/test/smoke.sh
+- tools/clidash/test/css.test.js
 
 ## God Nodes (most connected - your core abstractions)
 1. `getDb()` - 150 edges
@@ -330,10 +345,10 @@
 10. `Changelog` - 40 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `queryClaudeUnderSpinner()` --indirect_call--> `icon()`  [INFERRED]
-  setup/lib/claude-assist.ts → .claude/skills/add-clidash/add/tools/clidash/public/app.js
-- `runUnderWindow()` --indirect_call--> `icon()`  [INFERRED]
-  setup/lib/windowed-runner.ts → .claude/skills/add-clidash/add/tools/clidash/public/app.js
+- `run()` --calls--> `applySkill()`  [EXTRACTED]
+  setup/channels/whatsapp-flow.test.ts → scripts/skill-apply.ts
+- `deliver()` --calls--> `getChannelAdapter()`  [EXTRACTED]
+  scripts/test-v2-channel-e2e.ts → src/channels/channel-registry.ts
 - `hookLogger()` --indirect_call--> `input()`  [INFERRED]
   container/agent-runner/scripts/sdk-signal-probe.ts → src/guard/guard.test.ts
 - `migrate-v2.sh script` --calls--> `build.sh script`  [EXTRACTED]
@@ -352,63 +367,63 @@
 - **Registered ResponseHandler pattern for button-click approvals/questions** — src_modules_approvals_project_responsehandler, src_modules_interactive_project_responsehandler, src_modules_approvals_project_pending_approvals_table, src_modules_interactive_project_pending_questions_table [INFERRED 0.75]
 - **Human-in-the-loop MCP tools exposed to the agent** — src_modules_interactive_agent_ask_user_question, src_modules_approvals_agent_install_packages, src_modules_approvals_agent_add_mcp_server, src_modules_approvals_agent_onecli_credential_approval [INFERRED 0.75]
 
-## Communities (325 total, 44 thin omitted)
+## Communities (340 total, 49 thin omitted)
 
 ### Community 0 - "Task Formatting & Display"
-Cohesion: 0.13
-Nodes (36): appendTaskLog(), cancelTaskCommand(), createTask(), enrichListRow(), getTask(), groupArg(), listTasks(), mutateTask() (+28 more)
+Cohesion: 0.12
+Nodes (38): appendTaskLog(), cancelTaskCommand(), createTask(), enrichListRow(), getTask(), groupArg(), listTasks(), mutateTask() (+30 more)
 
 ### Community 1 - "Startup Circuit Breaker"
 Cohesion: 0.20
 Nodes (10): BACKOFF_SCHEDULE_S, CB_PATH, CircuitBreakerState, enforceStartupBackoff(), getDelay(), read(), resetCircuitBreaker(), CB_PATH (+2 more)
 
 ### Community 2 - "Channel Wiring Defaults"
-Cohesion: 0.06
-Nodes (66): onInbound(), InboundEvent, normalizeOptions(), RawOption, resolveThreadPolicy(), getUnregisteredSenders(), recordDroppedMessage(), UnregisteredSender (+58 more)
+Cohesion: 0.05
+Nodes (81): onInbound(), InboundEvent, AskQuestionPayload, NormalizedOption, normalizeOption(), normalizeOptions(), OptionInput, OptionStyle (+73 more)
 
 ### Community 3 - "Agent Group DB Access"
 Cohesion: 0.06
-Nodes (36): collectActivity(), listDirs(), localDay(), normTs(), readTable(), CONTAINER_SEGS, describeFile(), globFiles() (+28 more)
+Nodes (35): collectActivity(), listDirs(), localDay(), normTs(), readTable(), CONTAINER_SEGS, describeFile(), globFiles() (+27 more)
 
 ### Community 4 - "CLI Guard & Delivery Actions"
-Cohesion: 0.16
-Nodes (25): testUnguarded, DeliveryActionHandler, defined, defineGuardedAction(), GuardedAction, GuardedActionSpec, isGuardedAction(), listGuardedActions() (+17 more)
+Cohesion: 0.14
+Nodes (30): commandDecide(), testUnguarded, DeliveryActionHandler, DeliveryGuardSpec, GuardedDeliveryHandler, runGuarded(), defined, defineGuardedAction() (+22 more)
 
 ### Community 5 - "Session/Approval DB Layer"
-Cohesion: 0.08
-Nodes (52): deletePendingApproval(), markApprovalAwaitingReason(), getDeliveryAdapter(), onDeliveryAdapterReady(), now(), seedApproval(), finalizeReject(), ApprovalSummary (+44 more)
+Cohesion: 0.13
+Nodes (30): deletePendingApproval(), getExpiredAwaitingReasonApprovals(), finalizeReject(), ApprovalSummary, buildQuestion(), Decision, editCardExpired(), handleRequest() (+22 more)
 
 ### Community 6 - "OneCLI Client & Formatting"
 Cohesion: 0.15
-Nodes (21): main(), parseArgv(), pickTransport(), printUsage(), formatHuman(), FormatMode, formatResponse(), isFlatRecord() (+13 more)
+Nodes (20): main(), parseArgv(), pickTransport(), printUsage(), formatHuman(), FormatMode, formatResponse(), isFlatRecord() (+12 more)
 
 ### Community 7 - "Session DB Connection Mgmt"
-Cohesion: 0.08
-Nodes (49): getConfig(), clearStaleProcessingAcks(), closeSessionDb(), getInboundDb(), getOutboundDb(), initTestSessionDb(), openInboundDb(), findQuestionResponse() (+41 more)
+Cohesion: 0.09
+Nodes (47): getConfig(), clearStaleProcessingAcks(), closeSessionDb(), getInboundDb(), getOutboundDb(), initTestSessionDb(), openInboundDb(), findQuestionResponse() (+39 more)
 
 ### Community 8 - "Container Restart & Wake"
 Cohesion: 0.04
-Nodes (97): LegacyContainerJson, composeGroupClaudeMd(), MCP_TOOLS_HOST_SUBPATH, syncSymlink(), writeAtomic(), ensureContainerConfigSpy, hookCalls, hostCtx (+89 more)
+Nodes (101): LegacyContainerJson, composeGroupClaudeMd(), MCP_TOOLS_HOST_SUBPATH, syncSymlink(), GROUPS_DIR, writeAtomic(), DEFAULT_AGENT_PROVIDER, envConfig (+93 more)
 
 ### Community 9 - "Central DB Migrations"
-Cohesion: 0.08
-Nodes (26): getMessagingGroupWithAgentCount(), mg(), now(), migration001, migration002, migration008, migration009, LegacyRow (+18 more)
+Cohesion: 0.07
+Nodes (29): ag, Args, cleanup, db, groupDir, sessionsDir, migration001, migration002 (+21 more)
 
 ### Community 10 - "Session DB Schema"
-Cohesion: 0.10
-Nodes (31): isContainerRunning(), countDueMessages(), deleteOrphanProcessingClaims(), getContainerState(), getMessageForRetry(), getProcessingClaims(), markMessageFailed(), retryWithBackoff() (+23 more)
+Cohesion: 0.09
+Nodes (37): ContainerState, countDueMessages(), deleteOrphanProcessingClaims(), DestinationRow, getContainerState(), getDeliveredIds(), getDueOutboundMessages(), getMessageForRetry() (+29 more)
 
 ### Community 11 - "Test Fixtures & Attachments"
 Cohesion: 0.06
-Nodes (55): copyTree(), main(), SKIP_NAMES, isSafeAttachmentName(), captured, CapturedEdit, readSessionDestinations(), createChatSession() (+47 more)
+Nodes (62): copyTree(), main(), SKIP_NAMES, isSafeAttachmentName(), readSessionDestinations(), createChatSession(), createGroup(), now() (+54 more)
 
 ### Community 12 - "WhatsApp Adapter Internals"
 Cohesion: 0.08
 Nodes (35): ConversationInfo, appendMediaFailureNote(), AUTH_DIR, baileysLogger, buildMediaMessage(), collectMentionedJids(), computeIsMention(), connectSocket() (+27 more)
 
 ### Community 14 - "Ask-Question Normalization"
-Cohesion: 0.33
-Nodes (5): AskQuestionPayload, NormalizedOption, normalizeOption(), OptionInput, OptionStyle
+Cohesion: 0.06
+Nodes (35): collectActivity(), listDirs(), localDay(), normTs(), readTable(), CONTAINER_SEGS, describeFile(), globFiles() (+27 more)
 
 ### Community 15 - "Self-Mod Approval Flow"
 Cohesion: 0.07
@@ -419,40 +434,40 @@ Cohesion: 0.15
 Nodes (28): ADMIN_COMMANDS, categorizeMessage(), CommandCategory, CommandInfo, escapeXml(), extractSenderId(), FILTERED_COMMANDS, formatAttachments() (+20 more)
 
 ### Community 18 - "Dashboard Data Collection"
-Cohesion: 0.06
-Nodes (77): getActiveAdapters(), projectDestinationsToSessions(), count(), count(), HOST, collectActivity(), collectAgentGroups(), collectChannels() (+69 more)
+Cohesion: 0.07
+Nodes (58): projectDestinationsToSessions(), count(), deleteAgentGroup(), updateAgentGroup(), getDb(), createContainerConfig(), deleteContainerConfig(), getAllContainerConfigs() (+50 more)
 
 ### Community 19 - "Claude Provider Runtime"
 Cohesion: 0.05
 Nodes (43): clearContainerToolInFlight(), setContainerToolInFlight(), ThrowingHookProvider, MemorySessionHookRegistration, PollLoopConfig, archiveTranscriptFile(), classifyRateLimitEvent(), claudeConfigDir() (+35 more)
 
 ### Community 20 - "Chat SDK Bridge Actions"
-Cohesion: 0.21
-Nodes (11): createPairingInterceptor(), fetchBotUsername(), InboundFields, isGroupPlatformId(), sanitizeTelegramLegacyMarkdown(), readInboundFields(), sendPairingConfirmation(), setup() (+3 more)
+Cohesion: 0.06
+Nodes (52): centralDb, cleanup(), deliver(), deliveredMessages, groupsDir, mockAdapter, sessDbPath, session (+44 more)
+
+### Community 21 - "Channel Adapter Interface"
+Cohesion: 0.14
+Nodes (38): absTime(), activeCollection(), badgeChip(), buildCell(), cellFor(), closeDetail(), coarseAgo(), currentView() (+30 more)
 
 ### Community 22 - "Channel Registry & Setup"
-Cohesion: 0.05
-Nodes (51): backfillContainerConfigs(), ChannelAdapterFactory, ChannelContextDefaults, ChannelDefaults, ChannelRegistration, DeliveryAddress, OutboundFile, OutboundMessage (+43 more)
+Cohesion: 0.03
+Nodes (63): ChannelAdapter, ChannelAdapterFactory, ChannelContextDefaults, ChannelDefaults, ChannelRegistration, ChannelSetup, DeliveryAddress, InboundMessage (+55 more)
 
 ### Community 23 - "Agent-to-Agent MCP Tools"
-Cohesion: 0.07
-Nodes (20): createAgent, askUserQuestion, routing(), sendCard, sleep(), addMcpServer, installPackages, allTools (+12 more)
+Cohesion: 0.06
+Nodes (23): sleep(), waitFor(), createAgent, askUserQuestion, routing(), sendCard, sleep(), addMcpServer (+15 more)
 
 ### Community 24 - "Outbound Delivery Polling"
-Cohesion: 0.04
-Nodes (120): ag, Args, cleanup, db, groupDir, sessionsDir, Args, generateId() (+112 more)
+Cohesion: 0.05
+Nodes (95): Args, generateId(), main(), parseArgs(), Args, generateId(), main(), namespacedUserId() (+87 more)
 
 ### Community 25 - "Provider Factory & Mocks"
-Cohesion: 0.07
-Nodes (39): CHAT_VERSION, ExecStub, Fixture, isSideEffectRun(), isString(), ROOT, runScenario(), SABOTEUR_EFFECTS (+31 more)
+Cohesion: 0.20
+Nodes (14): captureVars(), KNOWN, lintGateAmbiguity(), lintReferenceFloor(), Problem, PROMPT_FLAGS, promptVar(), referencedVars() (+6 more)
 
 ### Community 26 - "Admin Command Gate"
-Cohesion: 0.05
-Nodes (60): deliver(), getChannelAdapter(), ADMIN_COMMANDS, FILTERED_COMMANDS, gateCommand(), GateResult, isAdmin(), now() (+52 more)
-
-### Community 27 - "Destination Routing & Inbox Safety"
-Cohesion: 0.12
-Nodes (16): ContainerState, DestinationRow, getDeliveredIds(), getDueOutboundMessages(), getInboundSourceSessionId(), markDelivered(), markDeliveryFailed(), migrateDeliveredTable() (+8 more)
+Cohesion: 0.06
+Nodes (54): getChannelAdapter(), ADMIN_COMMANDS, FILTERED_COMMANDS, gateCommand(), GateResult, isAdmin(), now(), seedAgentGroup() (+46 more)
 
 ### Community 28 - "Compact Instructions & Session Routing"
 Cohesion: 0.12
@@ -472,11 +487,11 @@ Nodes (30): intentToString(), parseArgs(), printAttempt(), printCodeCard(), run(
 
 ### Community 32 - "Generic CRUD Dispatch"
 Cohesion: 0.19
-Nodes (14): CustomOperation, DISPATCH_INJECTED_KEYS, genericCreate(), genericDelete(), genericGet(), genericList(), genericUpdate(), normalizeArgs() (+6 more)
+Nodes (15): CustomOperation, DISPATCH_INJECTED_KEYS, genericCreate(), genericDelete(), genericGet(), genericList(), genericUpdate(), normalizeArgs() (+7 more)
 
 ### Community 33 - "Container Runner & Mounts"
 Cohesion: 0.11
-Nodes (45): anthropicSecretExists(), appendProviderImport(), askAgentProviderChoice(), askChannelChoice(), askDisplayName(), askOtherChannelName(), ChannelChoice, channelDmLabel() (+37 more)
+Nodes (38): anthropicSecretExists(), appendProviderImport(), askAgentProviderChoice(), askChannelChoice(), askDisplayName(), askOtherChannelName(), ChannelChoice, channelDmLabel() (+30 more)
 
 ### Community 34 - "Approvals & Destinations CRUD"
 Cohesion: 0.04
@@ -487,36 +502,36 @@ Cohesion: 0.09
 Nodes (24): Collaborator Agent Pattern, Companion Agent Pattern, create_agent MCP tool, ncl Write-Command Approval Flow, ncl Admin CLI, send_file MCP tool, ask_user_question MCP tool, send_card MCP tool (+16 more)
 
 ### Community 36 - "CLI Resource Dispatch"
-Cohesion: 0.20
-Nodes (15): getResource(), actorFor(), closestName(), commandHelp(), dispatch(), DispatchOptions, editDistance(), errMsg() (+7 more)
+Cohesion: 0.15
+Nodes (18): getResource(), actorFor(), closestName(), commandHelp(), dispatch(), DispatchOptions, editDistance(), errMsg() (+10 more)
 
 ### Community 37 - "Legacy Container Config Backfill"
-Cohesion: 0.27
-Nodes (11): run(), parseTimezoneFlag(), resolveConfigTimezone(), configFromDb(), resolveGroupTimezone(), appendRunLog(), formatLocalStamp(), formatLocalTime() (+3 more)
+Cohesion: 0.17
+Nodes (18): confirmAssistantResponds(), startSpinner(), fitToWidth(), fmtDuration(), visibleLength(), wrapLine(), buildPrompt(), claudeCliAvailable() (+10 more)
 
 ### Community 38 - "Mount Security Allowlist"
 Cohesion: 0.16
-Nodes (15): AdditionalMount, AllowedRoot, DEFAULT_BLOCKED_PATTERNS, expandPath(), findAllowedRoot(), getRealPath(), isValidContainerPath(), loadMountAllowlist() (+7 more)
+Nodes (15): MOUNT_ALLOWLIST_PATH, AdditionalMount, AllowedRoot, DEFAULT_BLOCKED_PATTERNS, expandPath(), findAllowedRoot(), getRealPath(), isValidContainerPath() (+7 more)
 
 ### Community 39 - "User-DM Cache & Delivery"
-Cohesion: 0.09
-Nodes (38): AgentTask, applyOne(), ApplyOptions, ApplyResult, applySkill(), bindCapture(), defaultResolveRemote(), destOf() (+30 more)
+Cohesion: 0.13
+Nodes (31): AgentTask, applyOne(), ApplyOptions, applySkill(), bindCapture(), defaultResolveRemote(), destOf(), dotPath() (+23 more)
 
 ### Community 40 - "CLI Help System"
-Cohesion: 0.15
-Nodes (18): getCliScope(), registerResourceHelpCommands(), getResources(), approvalState, mockGetAgentGroup, mockGetContainerConfig, mockGetPendingApproval, mockGetResource (+10 more)
+Cohesion: 0.14
+Nodes (16): getCliScope(), registerResourceHelpCommands(), getResources(), approvalState, mockGetAgentGroup, mockGetContainerConfig, mockGetPendingApproval, mockGetResource (+8 more)
 
 ### Community 41 - "Container Env Config"
 Cohesion: 0.11
-Nodes (33): answered(), confirmGroup(), decideOnecli(), emptyGroupTitles(), groupBody(), GROUPS, printLeftAlone(), runCommand() (+25 more)
+Nodes (30): answered(), confirmGroup(), decideOnecli(), emptyGroupTitles(), groupBody(), GROUPS, printLeftAlone(), runCommand() (+22 more)
 
 ### Community 42 - "TypeScript Build Config"
 Cohesion: 0.12
 Nodes (16): compilerOptions, esModuleInterop, module, moduleResolution, rootDir, skipLibCheck, strict, target (+8 more)
 
 ### Community 43 - "Group Folder Validation"
-Cohesion: 0.57
-Nodes (5): assertValidGroupFolder(), ensureWithinBase(), isValidGroupFolder(), RESERVED_FOLDERS, resolveGroupFolderPath()
+Cohesion: 0.15
+Nodes (23): getActiveAdapters(), collectActivity(), collectAgentGroups(), collectChannels(), collectContextWindows(), collectMessages(), collectSessions(), collectSnapshot() (+15 more)
 
 ### Community 44 - "Memory File Read/Write"
 Cohesion: 0.22
@@ -527,8 +542,8 @@ Cohesion: 0.05
 Nodes (40): [1.1.0] - 2026-02-23, [1.1.1] - 2026-02-24, [1.1.2] - 2026-02-24, [1.1.3] - 2026-02-25, [1.1.4] - 2026-03-01, [1.1.5] - 2026-03-01, [1.1.6] - 2026-03-01, [1.2.0] - 2026-03-02 (+32 more)
 
 ### Community 46 - "CRUD Test Harness"
-Cohesion: 0.12
-Nodes (31): DockerStatus, parseArgs(), run(), tryStartDocker(), detectRegisteredGroups(), run(), confirmThenOpen(), formatNoteLink() (+23 more)
+Cohesion: 0.15
+Nodes (22): DockerStatus, parseArgs(), run(), tryStartDocker(), detectRegisteredGroups(), run(), confirmThenOpen(), formatNoteLink() (+14 more)
 
 ### Community 47 - "Host Runtime Config"
 Cohesion: 0.47
@@ -555,8 +570,8 @@ Cohesion: 0.24
 Nodes (12): ColumnDef, flagLine(), flagName(), GENERIC_VERBS, genericFlags(), genericSummary(), GenericVerb, indent() (+4 more)
 
 ### Community 53 - "OneCLI Approval Bridge"
-Cohesion: 0.15
-Nodes (34): absTime(), activeCollection(), badgeChip(), buildCell(), cellFor(), closeDetail(), currentView(), dataSignature() (+26 more)
+Cohesion: 0.14
+Nodes (38): absTime(), activeCollection(), badgeChip(), buildCell(), cellFor(), closeDetail(), coarseAgo(), currentView() (+30 more)
 
 ### Community 54 - "SDK Hook Signal Probe"
 Cohesion: 0.18
@@ -583,8 +598,8 @@ Cohesion: 0.32
 Nodes (8): Memory Index Template (memory/index.md), Agent Memory System Definition, Open Knowledge Format (OKF), Memory System Index (memory/system/index.md), instructions.prepend.md (standing role/persona file), Agent Memory Section, Agent Workspace (/workspace/agent/), Welcome / Channel Onboarding Skill
 
 ### Community 60 - "Chat SDK Message Splitting"
-Cohesion: 0.14
-Nodes (15): fireAction(), makeAdapter(), ChatSdkBridgeConfig, createChatSdkBridge(), GatewayAdapter, handleForwardedEvent(), ReplyContext, ReplyContextExtractor (+7 more)
+Cohesion: 0.29
+Nodes (5): splitForLimit(), CapturedButton, PostCall, setupStubAdapter(), stubAdapter()
 
 ### Community 61 - "Group Filesystem Init"
 Cohesion: 0.80
@@ -595,12 +610,21 @@ Cohesion: 0.29
 Nodes (3): indexPath, sf, source
 
 ### Community 63 - "Task Session Templates"
-Cohesion: 0.12
-Nodes (15): ⚠️ STOP — READ THIS FIRST IF YOU ARE CLAUDE ⚠️, Architecture, Changelog, Community, Contributing, Customizing, FAQ, License (+7 more)
+Cohesion: 0.08
+Nodes (24): Agent Templates, Approval-gating sensitive actions, Contributing a template, MCP servers and credentials, MCP servers that require an env var to boot, Recurring tasks, Referencing extra context files, The template ref (+16 more)
 
 ### Community 64 - "Create-Agent Delivery Action"
-Cohesion: 0.19
-Nodes (11): getDeliveryAction(), DeliveryGuardSpec, GuardedDeliveryHandler, runGuarded(), isUnguardedEntry(), reenterGuardedDeliveryAction(), registerDeliveryAction(), isUnguarded() (+3 more)
+Cohesion: 0.28
+Nodes (7): getDeliveryAction(), isUnguardedEntry(), registerDeliveryAction(), isUnguarded(), {
+  mockRequestApproval,
+  mockGetContainerConfig,
+  mockCreateAgentGroup,
+  mockInitGroupFilesystem,
+  mockWriteDestinations,
+  mockNotifyWrite,
+  liveApprovals,
+  approvalHandlers,
+}, runCreateAgent(), SESSION
 
 ### Community 65 - "Channel Approval Tests"
 Cohesion: 0.06
@@ -623,20 +647,20 @@ Cohesion: 0.15
 Nodes (23): build.sh script, abort(), bold(), clear_line(), dim(), disable_v1_service(), find_v1(), green() (+15 more)
 
 ### Community 77 - "Platform ID Namespacing"
-Cohesion: 0.12
-Nodes (27): confirmAssistantResponds(), Block, dumpTranscriptOnFailure(), Fields, outcomeStatus(), QuietChildResult, runQuietStep(), runUnderSpinner() (+19 more)
+Cohesion: 0.13
+Nodes (23): offerClaudeOnFailure(), INSTALL_ID_PATH, installId(), Block, dumpTranscriptOnFailure(), Fields, outcomeStatus(), QuietChildResult (+15 more)
 
 ### Community 84 - "claude-assist.ts"
-Cohesion: 0.11
-Nodes (29): extractClaudeOAuthToken(), normalizeCapturedTerminalOutput(), runCli(), BIG_PICTURE_FILES, buildPrompt(), ensureClaudeReady(), formatToolUse(), handleStreamEvent() (+21 more)
+Cohesion: 0.13
+Nodes (28): extractClaudeOAuthToken(), normalizeCapturedTerminalOutput(), runCli(), BIG_PICTURE_FILES, buildPrompt(), ensureClaudeReady(), formatToolUse(), handleStreamEvent() (+20 more)
 
 ### Community 85 - "Add Signal Channel"
 Cohesion: 0.06
 Nodes (31): 1. Install signal-cli, 2. Copy the adapter and its registration test, 3. Register the adapter, 4. Install the QR-rendering dependency, 5. Build and validate, Add Signal Channel, Alternatives, Apply (+23 more)
 
 ### Community 86 - "emitStatus"
-Cohesion: 0.12
-Nodes (25): Args, childEnv(), createAnthropicSecret(), findAnthropicSecret(), listSecrets(), LOCAL_BIN, OnecliSecret, parseArgs() (+17 more)
+Cohesion: 0.20
+Nodes (16): parseArgs(), run(), main(), STEPS, getNodePath(), checkDockerGroupStale(), installCliSymlink(), killOrphanedProcesses() (+8 more)
 
 ### Community 87 - "Add DeltaChat Channel"
 Cohesion: 0.06
@@ -651,8 +675,8 @@ Cohesion: 0.06
 Nodes (30): 1. Copy the adapter and its registration test, 2. Register the adapter, 3. Install the adapter packages, 4. Build and validate, Add WhatsApp Channel, Alternatives, Apply, Assistant name (+22 more)
 
 ### Community 90 - "scheduling/db.ts"
-Cohesion: 0.14
-Nodes (26): ensureSchema(), nextEvenSeq(), openInboundDb(), cancelTask(), clearRecurrence(), deleteTask(), getCompletedRecurring(), insertRecurrence() (+18 more)
+Cohesion: 0.13
+Nodes (28): resolveGroupTimezone(), ensureSchema(), insertMessage(), nextEvenSeq(), openInboundDb(), cancelTask(), clearRecurrence(), getCompletedRecurring() (+20 more)
 
 ### Community 91 - "Claude Agent SDK Deep Dive"
 Cohesion: 0.07
@@ -691,16 +715,16 @@ Cohesion: 0.14
 Nodes (22): CHANNEL_FIELDS, emitStatus(), main(), parseArgs(), parseDotenv(), parseJson5(), writeEnvVar(), approximateIntervalAsCron() (+14 more)
 
 ### Community 100 - "skill-driver.ts"
-Cohesion: 0.14
-Nodes (20): ApplyEvent, InputMeta, StepOutcome, RunOutcome, channelsRemote(), clackResolveInput(), defaultOnEvent(), GATE_WORDING (+12 more)
+Cohesion: 0.11
+Nodes (26): normalizeValue(), parseDirectives(), ConfirmFlavor, extractOfferUrl(), GateDecision, gatePolicy(), guardOf(), decisions() (+18 more)
 
 ### Community 101 - "onecli.ts"
 Cohesion: 0.14
 Nodes (21): readVersionPin(), here, VERSIONS_FILE, childEnv(), ensureShellProfilePath(), extractUrlFromOutput(), gatewayV1Hint(), getOnecliApiHost() (+13 more)
 
 ### Community 102 - "verify.ts"
-Cohesion: 0.17
-Nodes (18): generatePlist(), detectExistingInstall(), ScanDeps, scanService(), deps(), dockerUp(), fakeRun(), DEFER_WIRE_CHANNELS (+10 more)
+Cohesion: 0.12
+Nodes (29): renderPingFailureNote(), cleanupLaunchdPeers(), cleanupSystemdPeers(), cleanupUnhealthyPeers(), deadLaunchdTarget(), deadSystemdTarget(), PeerCleanupResult, PeerStatus (+21 more)
 
 ### Community 103 - "resources/dashboard-pusher.ts"
 Cohesion: 0.16
@@ -723,8 +747,8 @@ Cohesion: 0.08
 Nodes (23): About, Diagnostics, Goal, How it works, Known behavior changes when channel adapters update, Operating principles, Rollback, Step 0: Preflight (stop early if unsafe) (+15 more)
 
 ### Community 108 - "run-channel-skill.ts"
-Cohesion: 0.15
-Nodes (17): firstFailureHint(), fullyApplied(), ChannelSkillOverrides, initFirstAgent(), resolveAgentName(), runChannelSkill(), bs, WireArgs (+9 more)
+Cohesion: 0.25
+Nodes (12): firstFailureHint(), ChannelSkillOverrides, initFirstAgent(), resolveAgentName(), runChannelSkill(), bs, WireArgs, BACK_TO_CHANNEL_SELECTION (+4 more)
 
 ### Community 109 - "teams-manifest.ts"
 Cohesion: 0.11
@@ -771,8 +795,8 @@ Cohesion: 0.12
 Nodes (16): 1. Copy the adapter, 1. Create a Personal Access Token for the bot account, 2. Register the adapter, 2. Set up a webhook on each repo, 3. Configure environment, 3. Install the adapter package, 4. Build and validate, Add GitHub Channel (+8 more)
 
 ### Community 120 - "Add Gmail Tool (OneCLI-native)"
-Cohesion: 0.12
-Nodes (17): Add Gmail Tool (OneCLI-native), Add the `.gmail-mcp` mount, Check agent secret-mode, Check logs if the tool isn't working, Credits & references, List groups, pick which ones get Gmail, Notes, Phase 1: Pre-flight (+9 more)
+Cohesion: 0.09
+Nodes (22): Add Gmail Tool (OneCLI-native), Add MCP server to Dockerfile, Add the `.gmail-mcp` mount, Check agent secret-mode, Check if already applied, Check logs if the tool isn't working, Copy the skill's tests into the container tree, Credits & references (+14 more)
 
 ### Community 121 - "NanoClaw Container Debugging"
 Cohesion: 0.12
@@ -791,8 +815,8 @@ Cohesion: 0.12
 Nodes (17): scripts, build, chat, dev, format, format:check, format:fix, lint (+9 more)
 
 ### Community 125 - "peer-cleanup.ts"
-Cohesion: 0.19
-Nodes (13): cleanupLaunchdPeers(), cleanupSystemdPeers(), cleanupUnhealthyPeers(), deadLaunchdTarget(), deadSystemdTarget(), PeerCleanupResult, PeerStatus, probeLaunchdPeer() (+5 more)
+Cohesion: 0.11
+Nodes (19): Add Google Drive Tool (folder-sandboxed, OneCLI-native), Check agent secret-mode, Check if already applied, Check logs if the tool isn't working, Confirm the sandbox actually holds, Copy the skill's source and test into the container tree, Credits & references, Discover the OneCLI provider slug for Google Drive (+11 more)
 
 ### Community 126 - "Add iMessage Channel"
 Cohesion: 0.12
@@ -811,8 +835,8 @@ Cohesion: 0.22
 Nodes (10): AssistContext, INSTALL_SKILLS, run(), applyProviderSkill(), isFlowOwnedCommand(), FailureAssistResult, getSetupProvider(), listSetupProviders() (+2 more)
 
 ### Community 130 - "Add Google Calendar Tool (OneCLI-native)"
-Cohesion: 0.13
-Nodes (15): Add Google Calendar Tool (OneCLI-native), Add the `.calendar-mcp` mount, Check agent secret-mode, Check logs if the tool isn't working, Credits & references, Phase 1: Pre-flight, Phase 3: Wire Per-Agent-Group, Phase 4: Build and Restart (+7 more)
+Cohesion: 0.10
+Nodes (20): Add Google Calendar Tool (OneCLI-native), Add MCP server to Dockerfile, Add the `.calendar-mcp` mount, Check agent secret-mode, Check if already applied, Check logs if the tool isn't working, Credits & references, Install the dependency-guard test (+12 more)
 
 ### Community 131 - "Add Linear Channel"
 Cohesion: 0.13
@@ -836,15 +860,15 @@ Nodes (15): Important notes, Instructions, Output format, Severity mapping, Step
 
 ### Community 136 - "CONTRIBUTING.md"
 Cohesion: 0.20
-Nodes (7): Customizing NanoClaw, Go deeper, How you actually work, The deal, The idea in a minute, Upgrading, What makes it work
+Nodes (6): 1. Detect, 2. Upgrade, 3. Verify, 4. Rollback, The CLI binary (`onecli-cli` pin), Upgrading the OneCLI gateway
 
 ### Community 137 - "The skills model"
 Cohesion: 0.13
 Nodes (15): A fork is a recipe of skills, A test for every integration point, How you actually work, Migrations, The bet, The maintainer's side of the deal, The problem, The promise (+7 more)
 
 ### Community 138 - "whatsapp-auth.ts"
-Cohesion: 0.16
-Nodes (13): qrcode, qrcode, AUTH_DIR, AuthMethod, baileysLogger, PAIRING_CODE_FILE, parseArgs(), phoneFromId() (+5 more)
+Cohesion: 0.21
+Nodes (10): AUTH_DIR, AuthMethod, baileysLogger, PAIRING_CODE_FILE, parseArgs(), phoneFromId(), { proto }, readAuthedPhoneFromFile() (+2 more)
 
 ### Community 139 - "README_ja.md"
 Cohesion: 0.13
@@ -883,7 +907,7 @@ Cohesion: 0.14
 Nodes (13): 1. Copy the adapter, helpers, and tests, 2. Register the adapter, 3. Register the pairing setup step, 4. Install the adapter package, 5. Build and validate, Add Telegram Channel, Apply, Channel Info (+5 more)
 
 ### Community 148 - "Add Vercel"
-Cohesion: 0.14
+Cohesion: 0.13
 Nodes (14): Add Vercel, Assign the secret to all agents, Check if already applied, Check if Vercel credential already exists, Check prerequisites, Done, Phase 1: Pre-flight, Phase 2: Install Container Skill (+6 more)
 
 ### Community 149 - "Add Webex Channel"
@@ -943,8 +967,8 @@ Cohesion: 0.23
 Nodes (10): isHeartbeatFresh(), pauseTypingRefreshAfterDelivery(), setTypingAdapter(), startTypingRefresh(), Call, captureAdapter(), triggerTyping(), TypingAdapter (+2 more)
 
 ### Community 163 - "Add Atomic Chat Integration"
-Cohesion: 0.17
-Nodes (11): Add Atomic Chat Integration, Check if already applied, Check logs if needed, Check prerequisites, Phase 1: Pre-flight, Phase 3: Configure, Phase 4: Verify, Restart the service (+3 more)
+Cohesion: 0.11
+Nodes (18): Add Atomic Chat Integration, Agent doesn't use Atomic Chat tools, Agent says "Atomic Chat is not installed" or tries to run a CLI, Check if already applied, Check logs if needed, Check prerequisites, Context window or output size issues, "Failed to connect to Atomic Chat" (+10 more)
 
 ### Community 164 - "Add Karpathy LLM Wiki"
 Cohesion: 0.17
@@ -999,15 +1023,15 @@ Cohesion: 0.47
 Nodes (8): enforceUpgradeTripwire(), getCodeVersion(), isUpgradeCurrent(), MARKER_PATH, markerPath(), readUpgradeState(), UpgradeState, writeUpgradeState()
 
 ### Community 177 - "whatsapp-send/index.ts"
-Cohesion: 0.27
-Nodes (9): getChannelAdapterExact(), insertMessage(), ALLOWED_CONTACTS, ALLOWED_GROUPS, env, parseAllowlist(), resolveAllowedWhatsappJid(), toDigits() (+1 more)
+Cohesion: 0.18
+Nodes (13): ApiError, apiRequest(), assertWithinRoot(), assertWithinRootLive(), driveRequest(), errorResult(), log(), proxyInit() (+5 more)
 
 ### Community 178 - "Remove Google Calendar Tool"
-Cohesion: 0.20
+Cohesion: 0.22
 Nodes (8): 1. Unregister the MCP server (per group), 2. Remove the `.calendar-mcp` mount from the DB (per group), 3. Delete the copied test file, 4. Revert the Dockerfile edits, 5. Rebuild and restart, 6. Optional: remove stubs and disconnect OneCLI, Remove Google Calendar Tool, Verification
 
 ### Community 179 - "Remove Gmail Tool"
-Cohesion: 0.20
+Cohesion: 0.25
 Nodes (7): 1. Delete the copied tests, 2. Unregister the MCP server (per group), 3. Remove the `.gmail-mcp` mount (per group), 4. Remove the Dockerfile install, 5. Rebuild and restart, 6. (Optional) Drop the host stubs and disconnect, Remove Gmail Tool
 
 ### Community 180 - "LLM Wiki"
@@ -1042,10 +1066,6 @@ Nodes (10): Agent-Runner Architecture, Agent-Runner Properties, Agent-to-Agent M
 Cohesion: 0.20
 Nodes (9): Build & Runtime, CI shape, Image build surface, Key invariants, Lockfiles, Migration history, Session wake (two paths), Supply chain (+1 more)
 
-### Community 188 - "Agent Templates"
-Cohesion: 0.20
-Nodes (10): Agent Templates, Approval-gating sensitive actions, Contributing a template, MCP servers and credentials, MCP servers that require an env var to boot, Recurring tasks, Referencing extra context files, The template ref (+2 more)
-
 ### Community 189 - "Repo Tokens"
 Cohesion: 0.20
 Nodes (9): Examples, Full workflow example, How it works, Inputs, Outputs, README setup, Repo Tokens, Usage (+1 more)
@@ -1057,6 +1077,10 @@ Nodes (7): entries, MigrationResult, migrationsDir, migrationVersions, projectRo
 ### Community 191 - "discord-resolver.ts"
 Cohesion: 0.24
 Nodes (7): buildDiscordResolver(), Channel, ChannelInfo, emptyResolver(), FetchFn, Guild, mockFetch()
+
+### Community 192 - "ChannelSetup"
+Cohesion: 0.18
+Nodes (12): assertWithinRoot(), assertWithinRootLive(), DriveApiError, driveRequest(), errorResult(), log(), proxyInit(), resolveRootFolderId() (+4 more)
 
 ### Community 193 - "format-tasks.ts"
 Cohesion: 0.42
@@ -1123,8 +1147,8 @@ Cohesion: 0.29
 Nodes (7): Add env-var stubs to `.env.example`, Copy the skill's source and tests into both trees, Forward host env vars into the container, Phase 2: Apply Code Changes, Register the MCP server in the agent-runner, Surface `[ATOMIC]` log lines at info level, Validate code changes
 
 ### Community 209 - "Troubleshooting"
-Cohesion: 0.29
-Nodes (7): Agent doesn't use Atomic Chat tools, Agent says "Atomic Chat is not installed" or tries to run a CLI, Context window or output size issues, "Failed to connect to Atomic Chat", `model not found` / 404 on generate, Slow first response, Troubleshooting
+Cohesion: 0.12
+Nodes (17): Add Google Sheets Tool (folder-sandboxed, OneCLI-native), Check agent secret-mode, Check if already applied, Check logs if the tool isn't working, Confirm the sandbox holds, Copy the skill's source and test into the container tree, Credits & references, Discover the OneCLI provider slug for Sheets/Drive (+9 more)
 
 ### Community 210 - "clidash"
 Cohesion: 0.29
@@ -1183,8 +1207,8 @@ Cohesion: 0.29
 Nodes (7): Agent Memory, How memory reaches the agent, Layout, Migrating older memory, Operator notes, Portable format (OKF), What goes where
 
 ### Community 226 - "Upgrading the OneCLI gateway"
-Cohesion: 0.29
-Nodes (6): 1. Detect, 2. Upgrade, 3. Verify, 4. Rollback, The CLI binary (`onecli-cli` pin), Upgrading the OneCLI gateway
+Cohesion: 0.15
+Nodes (14): CHAT_VERSION, ExecStub, Fixture, isSideEffectRun(), isString(), ROOT, runScenario(), SABOTEUR_EFFECTS (+6 more)
 
 ### Community 227 - "Architecture: Channel System"
 Cohesion: 0.29
@@ -1271,12 +1295,12 @@ Cohesion: 0.33
 Nodes (4): db, provider, resultChecker, timeout
 
 ### Community 249 - "Phase 2: Apply Code Changes"
-Cohesion: 0.40
-Nodes (5): Add MCP server to Dockerfile, Check if already applied, Install the dependency-guard test, Phase 2: Apply Code Changes, Rebuild the container image
+Cohesion: 0.29
+Nodes (9): parseArgs(), run(), isRoot(), DEFER_WIRE_CHANNELS, determineVerifyStatus(), isPathInside(), resolveBinaryScript(), run() (+1 more)
 
 ### Community 250 - "Phase 2: Apply Code Changes"
-Cohesion: 0.40
-Nodes (5): Add MCP server to Dockerfile, Check if already applied, Copy the skill's tests into the container tree, Phase 2: Apply Code Changes, Rebuild the container image
+Cohesion: 0.27
+Nodes (5): 1. Delete the copied server and test, 2. Unregister the MCP server (per group), 3. Restart, 4. (Optional) Clear the cached folder-ID and disconnect, Remove Google Drive Tool
 
 ### Community 251 - "Prerequisites by Provider"
 Cohesion: 0.40
@@ -1319,12 +1343,12 @@ Cohesion: 0.80
 Nodes (4): is_active(), log(), remove(), cleanup-sessions.sh script
 
 ### Community 261 - "agent-ping.ts"
-Cohesion: 0.60
-Nodes (3): classifyPingResult(), pingCliAgent(), PingResult
+Cohesion: 0.20
+Nodes (6): ApplyEvent, InputMeta, StepOutcome, MARKER_FILE, RunOutcome, RunSkillOptions
 
 ### Community 264 - "refresh"
-Cohesion: 0.67
-Nodes (4): coarseAgo(), refresh(), renderControls(), tick()
+Cohesion: 0.18
+Nodes (10): description, engines, node, name, private, scripts, start, test (+2 more)
 
 ### Community 268 - "Step 0: Check code push status"
 Cohesion: 0.50
@@ -1382,25 +1406,65 @@ Nodes (3): Central DB Schema, Container lifecycle states, Pending Question Flow
 Cohesion: 0.67
 Nodes (3): How Memory Works, Memory Hierarchy, Memory System
 
+### Community 325 - "signal-auth.ts"
+Cohesion: 0.31
+Nodes (9): qrcode, qrcode, cliPath(), listAccounts(), printLink(), renderQr(), run(), SignalAccount (+1 more)
+
+### Community 326 - "auth.ts"
+Cohesion: 0.33
+Nodes (9): Args, childEnv(), createAnthropicSecret(), findAnthropicSecret(), listSecrets(), LOCAL_BIN, OnecliSecret, parseArgs() (+1 more)
+
+### Community 327 - "Operations"
+Cohesion: 0.25
+Nodes (7): Conventions, Ingest, Layers, Lint, Operations, Query, Wiki
+
+### Community 328 - "fullyApplied"
+Cohesion: 0.29
+Nodes (6): ApplyResult, fullyApplied(), Recorded, run(), SKILL_DIR, ProviderInstallResult
+
+### Community 329 - "bright-select.ts"
+Cohesion: 0.29
+Nodes (5): brightSelect(), BrightSelectOption, BrightSelectOptions, flushStdin(), PromptState
+
+### Community 330 - "Customizing NanoClaw"
+Cohesion: 0.29
+Nodes (7): Customizing NanoClaw, Go deeper, How you actually work, The deal, The idea in a minute, Upgrading, What makes it work
+
+### Community 331 - "clidash"
+Cohesion: 0.29
+Nodes (6): API, clidash, Configure (`clidash.config.json`), Deploy as a service, Run, Test
+
+### Community 333 - "Remove Google Sheets Tool"
+Cohesion: 0.33
+Nodes (5): 1. Delete the copied server and test, 2. Unregister the MCP server (per group), 3. Restart, 4. (Optional) Clear the cached folder-ID and disconnect, Remove Google Sheets Tool
+
+### Community 334 - "whatsapp.test.ts"
+Cohesion: 0.33
+Nodes (3): Directive, directives, SKILL_MD
+
+### Community 335 - "egress-lockdown.ts"
+Cohesion: 0.47
+Nodes (4): dockerOk(), EgressLockdownError, ensureEgressNetwork(), gatewayAttached()
+
 ## Knowledge Gaps
-- **2058 isolated node(s):** `server`, `transport`, `name`, `version`, `description` (+2053 more)
+- **2134 isolated node(s):** `server`, `transport`, `CONTAINER_SEGS`, `name`, `version` (+2129 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **44 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **49 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
+- **Why does `handleRequest()` connect `Session/Approval DB Layer` to `Channel Wiring Defaults`, `Container Restart & Wake`, `Dashboard Data Collection`, `Chat SDK Bridge Actions`, `Agent-to-Agent MCP Tools`?**
+  _High betweenness centrality (0.038) - this node is a cross-community bridge._
 - **Why does `sleep()` connect `Agent-to-Agent MCP Tools` to `Container Poll Loop`?**
-  _High betweenness centrality (0.037) - this node is a cross-community bridge._
-- **Why does `handleRequest()` connect `Session/Approval DB Layer` to `Channel Wiring Defaults`, `Container Restart & Wake`, `Dashboard Data Collection`, `Channel Registry & Setup`, `Agent-to-Agent MCP Tools`?**
-  _High betweenness centrality (0.034) - this node is a cross-community bridge._
-- **Why does `err()` connect `Channel Registry & Setup` to `Task Formatting & Display`, `Channel Wiring Defaults`, `CLI Guard & Delivery Actions`, `Session/Approval DB Layer`, `OneCLI Client & Formatting`, `Container Restart & Wake`, `Session DB Schema`, `Test Fixtures & Attachments`, `WhatsApp Adapter Internals`, `Dashboard Data Collection`, `Chat SDK Bridge Actions`, `Outbound Delivery Polling`, `Admin Command Gate`, `Destination Routing & Inbox Safety`, `CLI Resource Dispatch`, `Mount Security Allowlist`, `Webhook Server`, `Task/Template Parsing`, `Chat SDK Message Splitting`, `Group Filesystem Init`, `scheduling/db.ts`?**
-  _High betweenness centrality (0.029) - this node is a cross-community bridge._
+  _High betweenness centrality (0.032) - this node is a cross-community bridge._
+- **Why does `err()` connect `Chat SDK Bridge Actions` to `Task Formatting & Display`, `Channel Wiring Defaults`, `CLI Guard & Delivery Actions`, `Session/Approval DB Layer`, `OneCLI Client & Formatting`, `Container Restart & Wake`, `Session DB Schema`, `Test Fixtures & Attachments`, `WhatsApp Adapter Internals`, `Dashboard Data Collection`, `Channel Registry & Setup`, `Outbound Delivery Polling`, `Admin Command Gate`, `CLI Resource Dispatch`, `Mount Security Allowlist`, `Group Folder Validation`, `Webhook Server`, `Task/Template Parsing`, `Group Filesystem Init`, `scheduling/db.ts`?**
+  _High betweenness centrality (0.032) - this node is a cross-community bridge._
 - **Are the 69 inferred relationships involving `err()` (e.g. with `backfillContainerConfigs()` and `initChannelAdapters()`) actually correct?**
   _`err()` has 69 INFERRED edges - model-reasoned connections that need verification._
-- **What connects `server`, `transport`, `name` to the rest of the system?**
-  _2058 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `server`, `transport`, `CONTAINER_SEGS` to the rest of the system?**
+  _2134 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Task Formatting & Display` be split into smaller, more focused modules?**
-  _Cohesion score 0.12692307692307692 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.1173054587688734 - nodes in this community are weakly interconnected._
 - **Should `Channel Wiring Defaults` be split into smaller, more focused modules?**
-  _Cohesion score 0.055905220288781934 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.04706163401815576 - nodes in this community are weakly interconnected._
